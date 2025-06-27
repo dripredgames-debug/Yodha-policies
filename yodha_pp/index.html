@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yodha: Battle Board - Terms and Privacy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #0a0a0f;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* Parallax Background */
+        .parallax {
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            perspective: 2px; /* Creates the parallax effect depth */
+            position: relative;
+        }
+
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform-style: preserve-3d;
+        }
+
+        .parallax-layer-back {
+            background-image: url('assets/yodha.png');
+            opacity: 0.3;
+            z-index: -2;
+            transform: translateZ(-2px) scale(2); /* Moves farther back, scaled up */
+        }
+
+        .parallax-layer-mid {
+            background-image: url('assets/yodha.png');
+            opacity: 0.2;
+            z-index: -1;
+            transform: translateZ(-1px) scale(1.5); /* Closer layer, less scaling */
+        }
+
+        header {
+            background: linear-gradient(180deg, rgba(20, 20, 30, 0.9), rgba(20, 20, 30, 0.7));
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(5px);
+        }
+
+        header img {
+            max-width: clamp(80px, 15vw, 120px);
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+            transition: transform 0.3s ease;
+        }
+
+        header img:hover {
+            transform: scale(1.1);
+        }
+
+        header h1 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin: 0.5rem 0;
+            text-shadow: 0 0 10px rgba(186, 199, 208, 0.5);
+        }
+
+        header p {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            opacity: 0.8;
+        }
+
+        nav {
+            background: rgba(20, 20, 30, 0.95);
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        nav a {
+            color: #ff0000;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 clamp(1rem, 4vw, 1.5rem);
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            background: rgba(30, 30, 40, 0.95);
+            padding: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 0.5rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        h3 {
+            color: #e0e0e0;
+            margin-top: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        p, li {
+            margin-bottom: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            opacity: 0.9;
+        }
+
+        ul {
+            padding-left: clamp(1rem, 3vw, 1.5rem);
+        }
+
+        ul li {
+            list-style-type: square;
+        }
+
+        footer {
+            background: linear-gradient(180deg, rgba(20, 20, 30, 0.9), rgba(20, 20, 30, 0.7));
+            color: #fff;
+            text-align: center;
+            padding: clamp(1rem, 3vw, 1.5rem);
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+            }
+
+            header {
+                padding: 1.5rem 1rem;
+            }
+
+            nav {
+                padding: 0.75rem;
+            }
+
+            nav a {
+                margin: 0 0.75rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .parallax-layer-back, .parallax-layer-mid {
+                /* Disable parallax on smaller screens for performance */
+                position: fixed;
+                transform: none;
+                background-attachment: fixed;
+                min-height: 100vh;
+            }
+
+            header img {
+                max-width: clamp(70px, 12vw, 100px);
+            }
+
+            header h1 {
+                font-size: clamp(1.3rem, 4vw, 2rem);
+            }
+
+            nav {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            nav a {
+                margin: 0.5rem 0;
+                font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem 0.5rem;
+            }
+
+            header h1 {
+                font-size: clamp(1.2rem, 4vw, 1.5rem);
+            }
+
+            header p {
+                font-size: clamp(0.8rem, 2.5vw, 1rem);
+            }
+
+            nav a {
+                font-size: clamp(0.8rem, 2vw, 0.9rem);
+                margin: 0.4rem 0;
+            }
+
+            section {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            h2 {
+                font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+            }
+
+            h3 {
+                font-size: clamp(1rem, 2.5vw, 1.3rem);
+            }
+
+            p, li {
+                font-size: clamp(0.8rem, 2vw, 1rem);
+            }
+
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            footer {
+                font-size: clamp(0.8rem, 2vw, 0.9rem);
+            }
+        }
+
+        @media (max-width: 360px) {
+            header img {
+                max-width: clamp(60px, 10vw, 80px);
+            }
+
+            header h1 {
+                font-size: clamp(1rem, 3.5vw, 1.3rem);
+            }
+
+            nav a {
+                font-size: clamp(0.75rem, 2vw, 0.85rem);
+            }
+
+            section {
+                padding: 0.75rem;
+            }
+
+            .container {
+                padding: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax">
+        <div class="parallax-layer parallax-layer-back"></div>
+        <div class="parallax-layer parallax-layer-mid"></div>
+        <header>
+            <img src="assets/drg.png" alt="Drip Red Games Logo">
+            <h1>Yodha: Battle Board</h1>
+            <p>Terms and Conditions & Privacy Policy</p>
+        </header>
+        <nav>
+            <a href="#terms">Terms and Conditions</a>
+            <a href="#privacy">Privacy Policy</a>
+        </nav>
+        <div class="container">
+            <section id="terms">
+                <h2>Terms and Conditions</h2>
+                <p><strong>Last Updated: June 27, 2025</strong></p>
+                <p>Welcome to Yodha: Battle Board ("the App"), a strategic online multiplayer board game developed by Drip Red Games ("we," "us," or "our"). By downloading, installing, or using the App, you agree to be bound by these Terms and Conditions ("Terms"), which are stored locally on your device. If you do not agree with these Terms, please do not use the App.</p>
+                
+                <h3>1. Acceptance of Terms</h3>
+                <p>By accessing or using the App, you confirm that you are at least 13 years of age (or the minimum age required in your jurisdiction to use online services) and agree to comply with these Terms. If you are under the age of 18, you must have the consent of a parent or legal guardian to use the App.</p>
+                
+                <h3>2. License to Use the App</h3>
+                <p>We grant you a non-exclusive, non-transferable, revocable license to use the App for personal, non-commercial purposes, subject to these Terms. You may not:</p>
+                <ul>
+                    <li>Modify, disassemble, decompile, or reverse-engineer the App.</li>
+                    <li>Use the App for any illegal or unauthorized purpose.</li>
+                    <li>Distribute, sell, or sublicense the App or any part thereof.</li>
+                </ul>
+                
+                <h3>3. Account and User Conduct</h3>
+                <h4>3.1 Guest Accounts</h4>
+                <p>The App allows you to play as a guest using a unique identifier (Guest ID, e.g., #y1234567890) generated temporarily for each session. This Guest ID is not stored in any database and is deleted when you close the App.</p>
+                <h4>3.2 User Conduct</h4>
+                <p>When using the App, you agree to:</p>
+                <ul>
+                    <li>Not engage in abusive, harassing, or offensive behavior, including in chat features.</li>
+                    <li>Not use cheats, hacks, or any unauthorized third-party software to gain an advantage.</li>
+                    <li>Not impersonate others or provide false information.</li>
+                    <li>Comply with all applicable laws and regulations.</li>
+                </ul>
+                <p>We reserve the right to suspend or terminate your access to the App if you violate these conduct rules.</p>
+                
+                <h3>4. Gameplay and Online Features</h3>
+                <h4>4.1 Online Multiplayer</h4>
+                <p>The App connects players for online matches via a WebSocket server. You acknowledge that:</p>
+                <ul>
+                    <li>An active internet connection is required for online gameplay.</li>
+                    <li>We are not responsible for disruptions caused by network issues or server downtime.</li>
+                    <li>Matchmaking is random, and you may be paired with players from different regions.</li>
+                    <li>No gameplay data is stored in any database; all data is temporary and deleted after the session ends.</li>
+                </ul>
+                <h4>4.2 In-Game Chat</h4>
+                <p>The App includes a chat feature with pre-selected messages. These messages are sent directly to your opponent during gameplay and are not stored in any database or retained after the match ends.</p>
+                <h4>4.3 Game Data</h4>
+                <p>Your game progress, including match history and moves, is stored temporarily in your device’s memory during gameplay. No data is stored in a database or retained after you close the App or end a match.</p>
+                
+                <h3>5. Intellectual Property</h3>
+                <p>All content in the App, including but not limited to graphics, sounds, music, code, and game mechanics, is owned by Drip Red Games or its licensors and is protected by copyright, trademark, and other intellectual property laws. The unique concept and mechanics of the "sandwich" feature, as implemented in Yodha: Battle Board, are copyrighted by Drip Red Games. You may not copy, reproduce, distribute, or create derivative works based on this concept or any other content without our prior written permission.</p>
+                
+                <h3>6. Third-Party Services</h3>
+                <p>The App uses third-party services, including:</p>
+                <ul>
+                    <li>WebRTC for peer-to-peer communication.</li>
+                    <li>WebSocket for server communication.</li>
+                    <li>Connectivity Plus for network status monitoring.</li>
+                    <li>Audioplayers for sound effects.</li>
+                </ul>
+                <p>These services may temporarily process data (e.g., IP addresses) during gameplay but do not store it in any database. Please review their respective terms and privacy policies.</p>
+                
+                <h3>7. Termination</h3>
+                <p>We may terminate or suspend your access to the App at our discretion, without notice, for reasons including but not limited to:</p>
+                <ul>
+                    <li>Violation of these Terms.</li>
+                    <li>Suspected fraudulent or abusive activity.</li>
+                </ul>
+                <p>Since no data is stored, termination simply ends your ability to use the App.</p>
+                
+                <h3>8. Disclaimers and Limitation of Liability</h3>
+                <h4>8.1 No Warranty</h4>
+                <p>The App is provided "as is" without warranties of any kind, express or implied, including but not limited to fitness for a particular purpose or non-infringement.</p>
+                <h4>8.2 Limitation of Liability</h4>
+                <p>To the maximum extent permitted by law, Drip Red Games shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of the App, including but not limited to loss of data, device damage, or interruptions in service.</p>
+                
+                <h3>9. Indemnification</h3>
+                <p>You agree to indemnify and hold Drip Red Games, its affiliates, and its employees harmless from any claims, losses, or damages arising from your use of the App or violation of these Terms.</p>
+                
+                <h3>10. Governing Law</h3>
+                <p>These Terms are governed by the laws of India, without regard to its conflict of laws principles. Any disputes arising from these Terms shall be resolved in the courts of India.</p>
+                
+                <h3>11. Changes to the Terms</h3>
+                <p>We may update these Terms from time to time. The updated Terms will be included in App updates and stored locally on your device. Your continued use of the App constitutes acceptance of the revised Terms.</p>
+                
+                <h3>12. Contact Us</h3>
+                <p>If you have questions about these Terms, please contact us at:</p>
+                <p><strong>Email:</strong> dripredgames@gmail.com</p>
+                <p>By using Yodha: Battle Board, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.</p>
+            </section>
+            
+            <section id="privacy">
+                <h2>Privacy Policy</h2>
+                <p><strong>Last Updated: June 27, 2025</strong></p>
+                <p>Drip Red Games ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy, stored locally on your device, explains how we collect, use, disclose, and safeguard your information when you use Yodha: Battle Board ("the App"). We do not collect or store any user information in a database. Please read this policy carefully. If you do not agree with this Privacy Policy, please do not use the App.</p>
+                
+                <h3>1. Information We Collect</h3>
+                <p>We do not collect or store any user information in a database. The following temporary data is processed during your use of the App and is deleted when you close the App:</p>
+                <h4>1.1 Temporary Data</h4>
+                <ul>
+                    <li><strong>IP Address:</strong> Your IP address is temporarily used to determine your approximate location (country) for matchmaking and to display a country code and flag. This data is not stored in any database.</li>
+                    <li><strong>Device Information:</strong> We may temporarily access information about your device (e.g., device type, operating system) to optimize gameplay. This data is not stored.</li>
+                    <li><strong>Gameplay Data:</strong> Data such as moves, match outcomes, and chat messages is processed temporarily in your device’s memory during gameplay and deleted when the match ends.</li>
+                    <li><strong>Guest ID:</strong> A randomly generated Guest ID (e.g., #y1234567890) is created for each session to identify you during gameplay. This ID is not linked to personal information and is deleted when you close the App.</li>
+                </ul>
+                <h4>1.2 Information You Provide</h4>
+                <p><strong>Chat Messages:</strong> The App allows you to send pre-selected chat messages during gameplay. These messages are sent directly to your opponent and are not stored in any database or retained after the match ends.</p>
+                <h4>1.3 No Personal Information</h4>
+                <p>The App does not collect or require personal information such as your name, email address, or payment details. No account creation is needed, and you play as a guest.</p>
+                
+                <h3>2. How We Use Your Information</h3>
+                <p>We use temporary data to:</p>
+                <ul>
+                    <li>Facilitate online multiplayer gameplay, including matchmaking and communication between players.</li>
+                    <li>Display your country flag and Guest ID to opponents for a personalized experience.</li>
+                    <li>Optimize the App’s performance during your session.</li>
+                    <li>Detect and prevent cheating or abuse during gameplay.</li>
+                </ul>
+                <p>No data is stored in a database or retained after you close the App.</p>
+                
+                <h3>3. How We Share Your Information</h3>
+                <p>We do not store or sell any user information. Temporary data may be shared as follows:</p>
+                <ul>
+                    <li><strong>Third-Party Services:</strong> The App uses third-party services (e.g., WebSocket, WebRTC, Connectivity Plus, Audioplayers) that may temporarily process data like IP addresses during gameplay. These services do not store data in a database. Please review their privacy policies for details.</li>
+                    <li><strong>Legal Requirements:</strong> We may disclose temporary data if required by law or in response to a court order or government request. Since no data is stored, such disclosures would be limited to real-time data.</li>
+                    <li><strong>No Other Sharing:</strong> We do not share any data with third parties for marketing or other purposes.</li>
+                </ul>
+                
+                <h3>4. Data Retention</h3>
+                <p>We do not store any user data in a database. All data (e.g., IP address, Guest ID, gameplay data, chat messages) is:</p>
+                <ul>
+                    <li>Processed temporarily in your device’s memory or during server communication.</li>
+                    <li>Deleted when you end a match or close the App.</li>
+                </ul>
+                <p>No data persists after your session ends.</p>
+                
+                <h3>5. Security</h3>
+                <p>We use reasonable security measures, such as encryption for WebSocket and WebRTC communications, to protect temporary data during transmission. Since no data is stored in a database, there is no risk of data breaches from stored information. However, no internet transmission is 100% secure, and we cannot guarantee absolute security during gameplay.</p>
+                
+                <h3>6. Children’s Privacy</h3>
+                <p>The App is not intended for children under 13 years of age. We do not knowingly collect or process personal information from children under 13. Since no data is stored, any temporary data from a child under 13 would be deleted after the session. If you are a parent or guardian and believe your child has used the App, please contact us.</p>
+                
+                <h3>7. Third-Party Services</h3>
+                <p>The App uses the following third-party services, which may temporarily process data during gameplay but do not store it:</p>
+                <ul>
+                    <li><strong>WebSocket (Glitch):</strong> Facilitates server communication. May temporarily process IP addresses.</li>
+                    <li><strong>WebRTC (flutter_webrtc):</strong> Enables peer-to-peer gameplay. May temporarily process IP addresses.</li>
+                    <li><strong>Connectivity Plus:</strong> Monitors network status. May access connectivity information temporarily.</li>
+                    <li><strong>Audioplayers:</strong> Plays sound effects. Does not process user data.</li>
+                </ul>
+                <p>We encourage you to review the privacy policies of these services for more details.</p>
+                
+                <h3>8. International Data Transfers</h3>
+                <p>Since the App supports global matchmaking, temporary data like your IP address or Guest ID may be processed by servers outside your country during gameplay. This data is not stored and is deleted after your session. By using the App, you consent to this temporary data transfer.</p>
+                
+                <h3>9. Your Choices</h3>
+                <ul>
+                    <li><strong>Opt-Out of Chat:</strong> You can choose not to use the in-game chat feature to avoid sending messages.</li>
+                    <li><strong>Disable Sound/Vibration:</strong> You can toggle sound and vibration settings within the App.</li>
+                    <li><strong>Stop Using the App:</strong> Since no data is stored, you can stop using the App at any time to cease all data processing.</li>
+                </ul>
+                
+                <h3>10. Changes to This Privacy Policy</h3>
+                <p>We may update this Privacy Policy from time to time. The updated policy will be included in App updates and stored locally on your device. Your continued use of the App constitutes acceptance of the revised policy.</p>
+                
+                <h3>11. Contact Us</h3>
+                <p>If you have questions about this Privacy Policy or our data practices, please contact us at:</p>
+                <p><strong>Email:</strong> dripredgames@gmail.com</p>
+                <p>By using Yodha: Battle Board, you acknowledge that you have read, understood, and agree to this Privacy Policy.</p>
+            </section>
+        </div>
+        <footer>
+            <p>© 2025 Drip Red Games. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
