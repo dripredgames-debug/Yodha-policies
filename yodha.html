@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yodha: Battle Board</title>
+    <title data-i18n="yodha_title">Yodha: Battle Board</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         * {
@@ -24,7 +24,7 @@
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            background-color: rgba(255, 255, 255, 0.9); /* Fallback with slight opacity */
+            background-color: rgba(255, 255, 255, 0.9);
         }
 
         body.dark-mode {
@@ -35,7 +35,7 @@
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            background-color: rgba(10, 10, 15, 0.8); /* Darker fallback for dark mode */
+            background-color: rgba(10, 10, 15, 0.8);
         }
 
         header {
@@ -54,7 +54,7 @@
         }
 
         header img {
-            max-width: clamp(100px, 20vw, 150px); /* Slightly larger for title image */
+            max-width: clamp(100px, 20vw, 150px);
             filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
             transition: transform 0.3s ease;
             margin-bottom: 1rem;
@@ -105,6 +105,49 @@
 
         .theme-toggle:hover i {
             transform: scale(1.2);
+        }
+
+        .language-selector {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #333;
+            transition: color 0.3s ease;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        body.dark-mode .language-selector {
+            color: #fff;
+            background: rgba(30, 30, 40, 0.95);
+            border: 1px solid #555;
+        }
+
+        .language-selector select {
+            padding: 0.5rem;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        body.dark-mode .language-selector select {
+            background: rgba(30, 30, 40, 0.95);
+            color: #fff;
+            border: 1px solid #555;
+        }
+
+        .language-selector select:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .language-selector select:focus {
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
         }
 
         nav {
@@ -350,175 +393,198 @@
 </head>
 <body>
     <header>
+        <div class="language-selector">
+            <select id="language-select" onchange="changeLanguage(this.value)" aria-label="Select Language">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="zh">中文</option>
+                <option value="hi">हिन्दी</option>
+                <option value="ar">العربية</option>
+                <option value="ru">Русский</option>
+                <option value="ja">日本語</option>
+                <option value="pt">Português</option>
+                <option value="it">Italiano</option>
+                <option value="ko">한국어</option>
+                <option value="tr">Türkçe</option>
+                <option value="nl">Nederlands</option>
+                <option value="sv">Svenska</option>
+            </select>
+        </div>
         <img src="assets/yodha.jpeg" alt="Yodha: Battle Board Title">
-        <h1>Yodha: Battle Board</h1>
-        <p>Strategic Online Multiplayer Board Game</p>
+        <h1 data-i18n="yodha_title">Yodha: Battle Board</h1>
+        <p data-i18n="yodha_subtitle">Strategic Online Multiplayer Board Game</p>
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
             <i class="fas fa-sun"></i>
         </button>
     </header>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="#terms">Terms and Conditions</a>
-        <a href="#privacy">Privacy Policy</a>
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="#terms" data-i18n="nav_terms">Terms and Conditions</a>
+        <a href="#privacy" data-i18n="nav_privacy">Privacy Policy</a>
     </nav>
     <div class="container">
         <section id="game">
-            <h2>Yodha: Battle Board</h2>
-            <p>Yodha: Battle Board is our first casual board game, localized to support multiple languages worldwide, offering a strategic and engaging online multiplayer experience. Challenge players globally with unique mechanics like the copyrighted "sandwich" feature. We are actively working on gameplay improvements and updates, with exciting enhancements planned for the coming months.</p>
+            <h2 data-i18n="section_yodha">Yodha: Battle Board</h2>
+            <p data-i18n="yodha_description">Yodha: Battle Board is our first casual board game, localized to support multiple languages worldwide, offering a strategic and engaging online multiplayer experience. Challenge players globally with unique mechanics like the copyrighted "sandwich" feature. We are actively working on gameplay improvements and updates, with exciting enhancements planned for the coming months.</p>
         </section>
         <section id="terms">
-            <h2>Terms and Conditions</h2>
-            <p><strong>Last Updated: August 14, 2025</strong></p>
-            <p>Welcome to Yodha: Battle Board ("the App"), a casual, localized online multiplayer board game developed by Dripredgames ("we," "us," or "our"). This is our first game, designed to be accessible in multiple languages, with ongoing improvements to enhance gameplay. By downloading, installing, or using the App, you agree to be bound by these Terms and Conditions ("Terms"), which are stored locally on your device. If you do not agree with these Terms, please do not use the App.</p>
-            <h3>1. Acceptance of Terms</h3>
-            <p>By accessing or using the App, you confirm that you are at least 13 years of age (or the minimum age required in your jurisdiction to use online services) and agree to comply with these Terms. If you are under 18, you must have the consent of a parent or legal guardian to use the App.</p>
-            <h3>2. License to Use the App</h3>
-            <p>We grant you a non-exclusive, non-transferable, revocable license to use the App for personal, non-commercial purposes, subject to these Terms. You may not:</p>
+            <h2 data-i18n="terms_title">Terms and Conditions</h2>
+            <p data-i18n="terms_updated">Last Updated: August 14, 2025</p>
+            <p data-i18n="terms_intro">Welcome to Yodha: Battle Board ("the App"), a casual, localized online multiplayer board game developed by Dripredgames ("we," "us," or "our"). This is our first game, designed to be accessible in multiple languages, with ongoing improvements to enhance gameplay. By downloading, installing, or using the App, you agree to be bound by these Terms and Conditions ("Terms"), which are stored locally on your device. If you do not agree with these Terms, please do not use the App.</p>
+            <h3 data-i18n="terms_acceptance">Acceptance of Terms</h3>
+            <p data-i18n="terms_acceptance_text">By accessing or using the App, you confirm that you are at least 13 years of age (or the minimum age required in your jurisdiction to use online services) and agree to comply with these Terms. If you are under 18, you must have the consent of a parent or legal guardian to use the App.</p>
+            <h3 data-i18n="terms_license">License to Use the App</h3>
+            <p data-i18n="terms_license_text">We grant you a non-exclusive, non-transferable, revocable license to use the App for personal, non-commercial purposes, subject to these Terms. You may not:</p>
             <ul>
-                <li>Modify, disassemble, decompile, or reverse-engineer the App.</li>
-                <li>Use the App for any illegal or unauthorized purpose.</li>
-                <li>Distribute, sell, or sublicense the App or any part thereof.</li>
+                <li data-i18n="terms_license_1">Modify, disassemble, decompile, or reverse-engineer the App.</li>
+                <li data-i18n="terms_license_2">Use the App for any illegal or unauthorized purpose.</li>
+                <li data-i18n="terms_license_3">Distribute, sell, or sublicense the App or any part thereof.</li>
             </ul>
-            <h3>3. Account and User Conduct</h3>
-            <h4>3.1 Guest Accounts</h4>
-            <p>The App allows you to play as a guest using a unique identifier (Guest ID, e.g., #y1234567890) generated temporarily for each session. This Guest ID is not stored in any database, not linked to any personal information, and is deleted when you close the App.</p>
-            <h4>3.2 User Conduct</h4>
-            <p>When using the App, you agree to:</p>
+            <h3 data-i18n="terms_account">Account and User Conduct</h3>
+            <h4 data-i18n="terms_guest_accounts">Guest Accounts</h4>
+            <p data-i18n="terms_guest_accounts_text">The App allows you to play as a guest using a unique identifier (Guest ID, e.g., #y1234567890) generated temporarily for each session. This Guest ID is not stored in any database, not linked to any personal information, and is deleted when you close the App.</p>
+            <h4 data-i18n="terms_user_conduct">User Conduct</h4>
+            <p data-i18n="terms_user_conduct_text">When using the App, you agree to:</p>
             <ul>
-                <li>Be respectful and courteous to other players, especially in the in-game chat feature, using only pre-selected messages.</li>
-                <li>Not engage in abusive, harassing, or offensive behavior, including in chat interactions.</li>
-                <li>Not use cheats, hacks, or any unauthorized third-party software to gain an advantage.</li>
-                <li>Not impersonate others or provide false information.</li>
-                <li>Comply with all applicable laws and regulations.</li>
+                <li data-i18n="terms_user_conduct_1">Be respectful and courteous to other players, especially in the in-game chat feature, using only pre-selected messages.</li>
+                <li data-i18n="terms_user_conduct_2">Not engage in abusive, harassing, or offensive behavior, including in chat interactions.</li>
+                <li data-i18n="terms_user_conduct_3">Not use cheats, hacks, or any unauthorized third-party software to gain an advantage.</li>
+                <li data-i18n="terms_user_conduct_4">Not impersonate others or provide false information.</li>
+                <li data-i18n="terms_user_conduct_5">Comply with all applicable laws and regulations.</li>
             </ul>
-            <p>We reserve the right to suspend or terminate your access to the App if you violate these conduct rules.</p>
-            <h3>4. Gameplay and Online Features</h3>
-            <h4>4.1 Online Multiplayer</h4>
-            <p>The App connects players for online matches via a WebSocket server. You acknowledge that:</p>
+            <p data-i18n="terms_user_conduct_violation">We reserve the right to suspend or terminate your access to the App if you violate these conduct rules.</p>
+            <h3 data-i18n="terms_gameplay">Gameplay and Online Features</h3>
+            <h4 data-i18n="terms_multiplayer">Online Multiplayer</h4>
+            <p data-i18n="terms_multiplayer_text">The App connects players for online matches via a WebSocket server. You acknowledge that:</p>
             <ul>
-                <li>An active internet connection is required for online gameplay.</li>
-                <li>We are not responsible for disruptions caused by network issues or server downtime.</li>
-                <li>Matchmaking is random, and you may be paired with players from different regions, with support for multiple languages to enhance accessibility.</li>
-                <li>No gameplay data, including match history or moves, is stored in any database; all data is temporary and deleted after the session ends.</li>
+                <li data-i18n="terms_multiplayer_1">An active internet connection is required for online gameplay.</li>
+                <li data-i18n="terms_multiplayer_2">We are not responsible for disruptions caused by network issues or server downtime.</li>
+                <li data-i18n="terms_multiplayer_3">Matchmaking is random, and you may be paired with players from different regions, with support for multiple languages to enhance accessibility.</li>
+                <li data-i18n="terms_multiplayer_4">No gameplay data, including match history or moves, is stored in any database; all data is temporary and deleted after the session ends.</li>
             </ul>
-            <h4>4.2 In-Game Chat</h4>
-            <p>The App includes a chat feature with pre-selected messages to foster respectful communication. These messages are sent directly to your opponent during gameplay, are not stored in any database, not shared with third parties, and are deleted when the match ends.</p>
-            <h4>4.3 Game Data</h4>
-            <p>Your game progress, including match history and moves, is stored temporarily in your device’s memory during gameplay. No data, including Guest IDs, is stored in a database or retained after you close the App or end a match.</p>
-            <h3>5. Intellectual Property</h3>
-            <p>All content in the App, including graphics, sounds, music, code, and game mechanics, is owned by Dripredgames or its licensors and is protected by copyright, trademark, and other intellectual property laws. The unique concept and mechanics of the "sandwich" feature, as implemented in Yodha: Battle Board, are copyrighted by Dripredgames. You may not copy, reproduce, distribute, or create derivative works based on this concept or any other content without our prior written permission.</p>
-            <h3>6. Third-Party Services</h3>
-            <p>The App uses third-party services, including:</p>
+            <h4 data-i18n="terms_chat">In-Game Chat</h4>
+            <p data-i18n="terms_chat_text">The App includes a chat feature with pre-selected messages to foster respectful communication. These messages are sent directly to your opponent during gameplay, are not stored in any database, not shared with third parties, and are deleted when the match ends.</p>
+            <h4 data-i18n="terms_game_data">Game Data</h4>
+            <p data-i18n="terms_game_data_text">Your game progress, including match history and moves, is stored temporarily in your device’s memory during gameplay. No data, including Guest IDs, is stored in a database or retained after you close the App or end a match.</p>
+            <h3 data-i18n="terms_ip">Intellectual Property</h3>
+            <p data-i18n="terms_ip_text">All content in the App, including graphics, sounds, music, code, and game mechanics, is owned by Dripredgames or its licensors and is protected by copyright, trademark, and other intellectual property laws. The unique concept and mechanics of the "sandwich" feature, as implemented in Yodha: Battle Board, are copyrighted by Dripredgames. You may not copy, reproduce, distribute, or create derivative works based on this concept or any other content without our prior written permission.</p>
+            <h3 data-i18n="terms_third_party">Third-Party Services</h3>
+            <p data-i18n="terms_third_party_text">The App uses third-party services, including:</p>
             <ul>
-                <li>WebRTC for peer-to-peer communication.</li>
-                <li>WebSocket for server communication.</li>
-                <li>Connectivity Plus for network status monitoring.</li>
-                <li>Audioplayers for sound effects.</li>
+                <li data-i18n="terms_third_party_1">WebRTC for peer-to-peer communication.</li>
+                <li data-i18n="terms_third_party_2">WebSocket for server communication.</li>
+                <li data-i18n="terms_third_party_3">Connectivity Plus for network status monitoring.</li>
+                <li data-i18n="terms_third_party_4">Audioplayers for sound effects.</li>
             </ul>
-            <p>These services may temporarily process data (e.g., IP addresses) during gameplay but do not store it in any database. Please review their respective terms and privacy policies.</p>
-            <h3>7. Termination</h3>
-            <p>We may terminate or suspend your access to the App at our discretion, without notice, for reasons including but not limited to:</p>
+            <p data-i18n="terms_third_party_note">These services may temporarily process data (e.g., IP addresses) during gameplay but do not store it in any database. Please review their respective terms and privacy policies.</p>
+            <h3 data-i18n="terms_termination">Termination</h3>
+            <p data-i18n="terms_termination_text">We may terminate or suspend your access to the App at our discretion, without notice, for reasons including but not limited to:</p>
             <ul>
-                <li>Violation of these Terms, including disrespectful conduct toward other players.</li>
-                <li>Suspected fraudulent or abusive activity.</li>
+                <li data-i18n="terms_termination_1">Violation of these Terms, including disrespectful conduct toward other players.</li>
+                <li data-i18n="terms_termination_2">Suspected fraudulent or abusive activity.</li>
             </ul>
-            <p>Since no data is stored, termination simply ends your ability to use the App.</p>
-            <h3>8. Disclaimers and Limitation of Liability</h3>
-            <h4>8.1 No Warranty</h4>
-            <p>The App is provided "as is" without warranties of any kind, express or implied, including but not limited to fitness for a particular purpose or non-infringement.</p>
-            <h4>8.2 Limitation of Liability</h4>
-            <p>To the maximum extent permitted by law, Dripredgames shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of the App, including but not limited to loss of data, device damage, or interruptions in service.</p>
-            <h3>9. Indemnification</h3>
-            <p>You agree to indemnify and hold Dripredgames, its affiliates, and its employees harmless from any claims, losses, or damages arising from your use of the App or violation of these Terms.</p>
-            <h3>10. Governing Law</h3>
-            <p>These Terms are governed by the laws of India, without regard to its conflict of laws principles. Any disputes arising from these Terms shall be resolved in the courts of India.</p>
-            <h3>11. Changes to the Terms</h3>
-            <p>We may update these Terms as we improve the App and add new features or languages. The updated Terms will be included in App updates and stored locally on your device. Your continued use of the App constitutes acceptance of the revised Terms.</p>
-            <h3>12. Contact Us</h3>
-            <p>If you have questions about these Terms, please contact us at:</p>
-            <p><strong>Email:</strong> support@dripredgames.com</p>
-            <p>By using Yodha: Battle Board, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.</p>
+            <p data-i18n="terms_termination_note">Since no data is stored, termination simply ends your ability to use the App.</p>
+            <h3 data-i18n="terms_disclaimer">Disclaimers and Limitation of Liability</h3>
+            <h4 data-i18n="terms_warranty">No Warranty</h4>
+            <p data-i18n="terms_warranty_text">The App is provided "as is" without warranties of any kind, express or implied, including but not limited to fitness for a particular purpose or non-infringement.</p>
+            <h4 data-i18n="terms_liability">Limitation of Liability</h4>
+            <p data-i18n="terms_liability_text">To the maximum extent permitted by law, Dripredgames shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of the App, including but not limited to loss of data, device damage, or interruptions in service.</p>
+            <h3 data-i18n="terms_indemnification">Indemnification</h3>
+            <p data-i18n="terms_indemnification_text">You agree to indemnify and hold Dripredgames, its affiliates, and its employees harmless from any claims, losses, or damages arising from your use of the App or violation of these Terms.</p>
+            <h3 data-i18n="terms_governing_law">Governing Law</h3>
+            <p data-i18n="terms_governing_law_text">These Terms are governed by the laws of India, without regard to its conflict of laws principles. Any disputes arising from these Terms shall be resolved in the courts of India.</p>
+            <h3 data-i18n="terms_changes">Changes to the Terms</h3>
+            <p data-i18n="terms_changes_text">We may update these Terms as we improve the App and add new features or languages. The updated Terms will be included in App updates and stored locally on your device. Your continued use of the App constitutes acceptance of the revised Terms.</p>
+            <h3 data-i18n="terms_contact">Contact Us</h3>
+            <p data-i18n="terms_contact_text">If you have questions about these Terms, please contact us at:</p>
+            <p data-i18n="terms_contact_email"><strong>Email:</strong> dripredgames@gmail.com</p>
+            <p data-i18n="terms_acknowledgment">By using Yodha: Battle Board, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.</p>
         </section>
         <section id="privacy">
-            <h2>Privacy Policy</h2>
-            <p><strong>Last Updated: August 14, 2025</strong></p>
-            <p>Dripredgames ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy, stored locally on your device, explains how we handle information when you use Yodha: Battle Board ("the App"), our first casual board game, localized for multiple languages worldwide. We do not collect, store, or share any user information, including Guest IDs, chat messages, or game sessions, with any database or third parties. Please read this policy carefully. If you do not agree with this Privacy Policy, please do not use the App.</p>
-            <h3>1. Information We Collect</h3>
-            <p>We do not collect or store any user information in a database. The following temporary data is processed during your use of the App and is deleted when you close the App:</p>
-            <h4>1.1 Temporary Data</h4>
+            <h2 data-i18n="privacy_title">Privacy Policy</h2>
+            <p data-i18n="privacy_updated">Last Updated: August 14, 2025</p>
+            <p data-i18n="privacy_intro">Dripredgames ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy, stored locally on your device, explains how we handle information when you use Yodha: Battle Board ("the App"), our first casual board game, localized for multiple languages worldwide. We do not collect, store, or share any user information, including Guest IDs, chat messages, or game sessions, with any database or third parties. Please read this policy carefully. If you do not agree with this Privacy Policy, please do not use the App.</p>
+            <h3 data-i18n="privacy_info">Information We Collect</h3>
+            <p data-i18n="privacy_info_text">We do not collect or store any user information in a database. The following temporary data is processed during your use of the App and is deleted when you close the App:</p>
+            <h4 data-i18n="privacy_temp_data">Temporary Data</h4>
             <ul>
-                <li><strong>IP Address:</strong> Your IP address is temporarily used to determine your approximate location (country) for matchmaking and to display a country code and flag. This data is not stored in any database or shared with third parties.</li>
-                <li><strong>Device Information:</strong> We may temporarily access information about your device (e.g., device type, operating system) to optimize gameplay. This data is not stored.</li>
-                <li><strong>Gameplay Data:</strong> Data such as moves, match outcomes, and chat messages is processed temporarily in your device’s memory during gameplay and deleted when the match ends.</li>
-                <li><strong>Guest ID:</strong> A randomly generated Guest ID (e.g., #y1234567890) is created for each session to identify you during gameplay. This ID is not linked to personal information, not stored in any database, not shared with third parties, and is deleted when you close the App.</li>
+                <li data-i18n="privacy_temp_data_1"><strong>IP Address:</strong> Your IP address is temporarily used to determine your approximate location (country) for matchmaking and to display a country code and flag. This data is not stored in any database or shared with third parties.</li>
+                <li data-i18n="privacy_temp_data_2"><strong>Device Information:</strong> We may temporarily access information about your device (e.g., device type, operating system) to optimize gameplay. This data is not stored.</li>
+                <li data-i18n="privacy_temp_data_3"><strong>Gameplay Data:</strong> Data such as moves, match outcomes, and chat messages is processed temporarily in your device’s memory during gameplay and deleted when the match ends.</li>
+                <li data-i18n="privacy_temp_data_4"><strong>Guest ID:</strong> A randomly generated Guest ID (e.g., #y1234567890) is created for each session to identify you during gameplay. This ID is not linked to personal information, not stored in any database, not shared with third parties, and is deleted when you close the App.</li>
             </ul>
-            <h4>1.2 Information You Provide</h4>
-            <p><strong>Chat Messages:</strong> The App allows you to send pre-selected chat messages during gameplay to communicate respectfully with opponents. These messages are sent directly to your opponent, are not stored in any database, not shared with third parties, and are deleted when the match ends.</p>
-            <h4>1.3 No Personal Information</h4>
-            <p>The App does not collect or require personal information such as your name, email address, or payment details. No account creation is needed, and you play as a guest.</p>
-            <h3>2. How We Use Your Information</h3>
-            <p>We use temporary data to:</p>
+            <h4 data-i18n="privacy_user_provided">Information You Provide</h4>
+            <p data-i18n="privacy_user_provided_text"><strong>Chat Messages:</strong> The App allows you to send pre-selected chat messages during gameplay to communicate respectfully with opponents. These messages are sent directly to your opponent, are not stored in any database, not shared with third parties, and are deleted when the match ends.</p>
+            <h4 data-i18n="privacy_no_personal">No Personal Information</h4>
+            <p data-i18n="privacy_no_personal_text">The App does not collect or require personal information such as your name, email address, or payment details. No account creation is needed, and you play as a guest.</p>
+            <h3 data-i18n="privacy_use">How We Use Your Information</h3>
+            <p data-i18n="privacy_use_text">We use temporary data to:</p>
             <ul>
-                <li>Facilitate online multiplayer gameplay, including matchmaking and communication between players in multiple languages.</li>
-                <li>Display your country flag and Guest ID to opponents for a personalized experience.</li>
-                <li>Optimize the App’s performance during your session.</li>
-                <li>Detect and prevent cheating or abuse during gameplay.</li>
+                <li data-i18n="privacy_use_1">Facilitate online multiplayer gameplay, including matchmaking and communication between players in multiple languages.</li>
+                <li data-i18n="privacy_use_2">Display your country flag and Guest ID to opponents for a personalized experience.</li>
+                <li data-i18n="privacy_use_3">Optimize the App’s performance during your session.</li>
+                <li data-i18n="privacy_use_4">Detect and prevent cheating or abuse during gameplay.</li>
             </ul>
-            <p>No data is stored in a database, retained after your session, or shared with third parties.</p>
-            <h3>3. How We Share Your Information</h3>
-            <p>We do not store, sell, or share any user information with third parties. Temporary data may be processed as follows:</p>
+            <p data-i18n="privacy_use_note">No data is stored in a database, retained after your session, or shared with third parties.</p>
+            <h3 data-i18n="privacy_sharing">How We Share Your Information</h3>
+            <p data-i18n="privacy_sharing_text">We do not store, sell, or share any user information with third parties. Temporary data may be processed as follows:</p>
             <ul>
-                <li><strong>Third-Party Services:</strong> The App uses third-party services (e.g., WebSocket, WebRTC, Connectivity Plus, Audioplayers) that may temporarily process data like IP addresses during gameplay. These services do not store data in a database or share it with others. Please review their privacy policies for details.</li>
-                <li><strong>Legal Requirements:</strong> We may disclose temporary data if required by law or in response to a court order or government request. Since no data is stored, such disclosures would be limited to real-time data.</li>
-                <li><strong>No Other Sharing:</strong> We do not share any data with third parties for marketing or other purposes.</li>
+                <li data-i18n="privacy_sharing_1"><strong>Third-Party Services:</strong> The App uses third-party services (e.g., WebSocket, WebRTC, Connectivity Plus, Audioplayers) that may temporarily process data like IP addresses during gameplay. These services do not store data in a database or share it with others. Please review their privacy policies for details.</li>
+                <li data-i18n="privacy_sharing_2"><strong>Legal Requirements:</strong> We may disclose temporary data if required by law or in response to a court order or government request. Since no data is stored, such disclosures would be limited to real-time data.</li>
+                <li data-i18n="privacy_sharing_3"><strong>No Other Sharing:</strong> We do not share any data with third parties for marketing or other purposes.</li>
             </ul>
-            <h3>4. Data Retention</h3>
-            <p>We do not store any user data in a database. All data (e.g., IP address, Guest ID, gameplay data, chat messages) is:</p>
+            <h3 data-i18n="privacy_retention">Data Retention</h3>
+            <p data-i18n="privacy_retention_text">We do not store any user data in a database. All data (e.g., IP address, Guest ID, gameplay data, chat messages) is:</p>
             <ul>
-                <li>Processed temporarily in your device’s memory or during server communication.</li>
-                <li>Deleted when you end a match or close the App.</li>
+                <li data-i18n="privacy_retention_1">Processed temporarily in your device’s memory or during server communication.</li>
+                <li data-i18n="privacy_retention_2">Deleted when you end a match or close the App.</li>
             </ul>
-            <p>No data persists after your session ends.</p>
-            <h3>5. Security</h3>
-            <p>We use reasonable security measures, such as encryption for WebSocket and WebRTC communications, to protect temporary data during transmission. Since no data is stored in a database, there is no risk of data breaches from stored information. However, no internet transmission is 100% secure, and we cannot guarantee absolute security during gameplay.</p>
-            <h3>6. Children’s Privacy</h3>
-            <p>The App is not intended for children under 13 years of age. We do not knowingly collect or process personal information from children under 13. Since no data is stored, any temporary data from a child under 13 would be deleted after the session. If you are a parent or guardian and believe your child has used the App, please contact us.</p>
-            <h3>7. Third-Party Services</h3>
-            <p>The App uses the following third-party services, which may temporarily process data during gameplay but do not store or share it:</p>
+            <p data-i18n="privacy_retention_note">No data persists after your session ends.</p>
+            <h3 data-i18n="privacy_security">Security</h3>
+            <p data-i18n="privacy_security_text">We use reasonable security measures, such as encryption for WebSocket and WebRTC communications, to protect temporary data during transmission. Since no data is stored in a database, there is no risk of data breaches from stored information. However, no internet transmission is 100% secure, and we cannot guarantee absolute security during gameplay.</p>
+            <h3 data-i18n="privacy_children">Children’s Privacy</h3>
+            <p data-i18n="privacy_children_text">The App is not intended for children under 13 years of age. We do not knowingly collect or process personal information from children under 13. Since no data is stored, any temporary data from a child under 13 would be deleted after the session. If you are a parent or guardian and believe your child has used the App, please contact us.</p>
+            <h3 data-i18n="privacy_third_party">Third-Party Services</h3>
+            <p data-i18n="privacy_third_party_text">The App uses the following third-party services, which may temporarily process data during gameplay but do not store or share it:</p>
             <ul>
-                <li><strong>WebSocket (Glitch):</strong> Facilitates server communication. May temporarily process IP addresses.</li>
-                <li><strong>WebRTC (flutter_webrtc):</strong> Enables peer-to-peer gameplay. May temporarily process IP addresses.</li>
-                <li><strong>Connectivity Plus:</strong> Monitors network status. May access connectivity information temporarily.</li>
-                <li><strong>Audioplayers:</strong> Plays sound effects. Does not process user data.</li>
+                <li data-i18n="privacy_third_party_1"><strong>WebSocket (Glitch):</strong> Facilitates server communication. May temporarily process IP addresses.</li>
+                <li data-i18n="privacy_third_party_2"><strong>WebRTC (flutter_webrtc):</strong> Enables peer-to-peer gameplay. May temporarily process IP addresses.</li>
+                <li data-i18n="privacy_third_party_3"><strong>Connectivity Plus:</strong> Monitors network status. May access connectivity information temporarily.</li>
+                <li data-i18n="privacy_third_party_4"><strong>Audioplayers:</strong> Plays sound effects. Does not process user data.</li>
             </ul>
-            <p>We encourage you to review the privacy policies of these services for more details.</p>
-            <h3>8. International Data Transfers</h3>
-            <p>Since the App supports global matchmaking with multiple language options, temporary data like your IP address or Guest ID may be processed by servers outside your country during gameplay. This data is not stored, not shared with third parties, and is deleted after your session. By using the App, you consent to this temporary data transfer.</p>
-            <h3>9. Your Choices</h3>
+            <p data-i18n="privacy_third_party_note">We encourage you to review the privacy policies of these services for more details.</p>
+            <h3 data-i18n="privacy_transfers">International Data Transfers</h3>
+            <p data-i18n="privacy_transfers_text">Since the App supports global matchmaking with multiple language options, temporary data like your IP address or Guest ID may be processed by servers outside your country during gameplay. This data is not stored, not shared with third parties, and is deleted after your session. By using the App, you consent to this temporary data transfer.</p>
+            <h3 data-i18n="privacy_choices">Your Choices</h3>
             <ul>
-                <li><strong>Opt-Out of Chat:</strong> You can choose not to use the in-game chat feature to avoid sending messages and maintain respectful interaction.</li>
-                <li><strong>Disable Sound/Vibration:</strong> You can toggle sound and vibration settings within the App.</li>
-                <li><strong>Stop Using the App:</strong> Since no data is stored, you can stop using the App at any time to cease all data processing.</li>
+                <li data-i18n="privacy_choices_1"><strong>Opt-Out of Chat:</strong> You can choose not to use the in-game chat feature to avoid sending messages and maintain respectful interaction.</li>
+                <li data-i18n="privacy_choices_2"><strong>Disable Sound/Vibration:</strong> You can toggle sound and vibration settings within the App.</li>
+                <li data-i18n="privacy_choices_3"><strong>Stop Using the App:</strong> Since no data is stored, you can stop using the App at any time to cease all data processing.</li>
             </ul>
-            <h3>10. Changes to This Privacy Policy</h3>
-            <p>We may update this Privacy Policy as we improve the App and add support for new languages or features. The updated policy will be included in App updates and stored locally on your device. Your continued use of the App constitutes acceptance of the revised policy.</p>
-            <h3>11. Contact Us</h3>
-            <p>If you have questions about this Privacy Policy or our data practices, please contact us at:</p>
-            <p><strong>Email:</strong> support@dripredgames.com</p>
-            <p>By using Yodha: Battle Board, you acknowledge that you have read, understood, and agree to this Privacy Policy.</p>
+            <h3 data-i18n="privacy_changes">Changes to This Privacy Policy</h3>
+            <p data-i18n="privacy_changes_text">We may update this Privacy Policy as we improve the App and add support for new languages or features. The updated policy will be included in App updates and stored locally on your device. Your continued use of the App constitutes acceptance of the revised policy.</p>
+            <h3 data-i18n="privacy_contact">Contact Us</h3>
+            <p data-i18n="privacy_contact_text">If you have questions about this Privacy Policy or our data practices, please contact us at:</p>
+            <p data-i18n="privacy_contact_email"><strong>Email:</strong> dripredgames@gmail.com</p>
+            <p data-i18n="privacy_acknowledgment">By using Yodha: Battle Board, you acknowledge that you have read, understood, and agree to this Privacy Policy.</p>
         </section>
     </div>
     <footer>
-        <p>© 2025 Dripredgames. All rights reserved.</p>
+        <p data-i18n="footer">© 2025 Dripredgames. All rights reserved.</p>
     </footer>
+    <script src="localizationyodha.js"></script>
     <script>
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
             const button = document.querySelector('.theme-toggle i');
             button.className = document.body.classList.contains('dark-mode') ? 'fas fa-moon' : 'fas fa-sun';
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeLanguage();
+        });
     </script>
 </body>
 </html>
-
