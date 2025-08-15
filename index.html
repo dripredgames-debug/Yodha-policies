@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dripredgames</title>
+    <title data-i18n="title">Dripredgames</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         * {
@@ -92,6 +92,49 @@
 
         .theme-toggle:hover i {
             transform: scale(1.2);
+        }
+
+        .language-selector {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #333;
+            transition: color 0.3s ease;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        body.dark-mode .language-selector {
+            color: #fff;
+            background: rgba(30, 30, 40, 0.95);
+            border: 1px solid #555;
+        }
+
+        .language-selector select {
+            padding: 0.5rem;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        body.dark-mode .language-selector select {
+            background: rgba(30, 30, 40, 0.95);
+            color: #fff;
+            border: 1px solid #555;
+        }
+
+        .language-selector select:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .language-selector select:focus {
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
         }
 
         .social-icons {
@@ -334,6 +377,11 @@
                 gap: 1rem;
                 font-size: clamp(1rem, 2.5vw, 1.2rem);
             }
+
+            .language-selector {
+                top: 0.5rem;
+                left: 0.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -349,10 +397,13 @@
                 font-size: clamp(0.8rem, 2.5vw, 1rem);
             }
 
-            .theme-toggle {
+            .theme-toggle, .language-selector {
                 font-size: 1.2rem;
                 top: 0.5rem;
-                right: 0.5rem;
+            }
+
+            .language-selector {
+                left: 0.5rem;
             }
 
             nav a {
@@ -412,50 +463,78 @@
                 gap: 0.6rem;
                 font-size: clamp(0.8rem, 1.8vw, 0.9rem);
             }
+
+            .language-selector {
+                left: 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
+        <div class="language-selector">
+            <select id="language-select" onchange="changeLanguage(this.value)" aria-label="Select Language">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="zh">中文</option>
+                <option value="hi">हिन्दी</option>
+                <option value="ar">العربية</option>
+                <option value="ru">Русский</option>
+                <option value="ja">日本語</option>
+                <option value="pt">Português</option>
+                <option value="it">Italiano</option>
+                <option value="ko">한국어</option>
+                <option value="tr">Türkçe</option>
+                <option value="nl">Nederlands</option>
+                <option value="sv">Svenska</option>
+            </select>
+        </div>
         <img src="assets/drg.png" alt="Dripredgames Logo">
-        <h1>Dripredgames</h1>
+        <h1 data-i18n="header_title">Dripredgames</h1>
         <div class="social-icons">
             <a href="https://x.com" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
             <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             <a href="https://bilibili.com" target="_blank" aria-label="Bilibili"><i class="fab fa-bilibili"></i></a>
         </div>
-        
-        <p>Bringing unique, never-before-seen, simple, and casual online board games to life</p>
+        <p data-i18n="header_subtitle">Bringing unique, never-before-seen, simple, and casual online board games to life</p>
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
             <i class="fas fa-sun"></i>
         </button>
     </header>
     <nav>
-        <a href="#games">My Games</a>
-        <a href="about.html">About the Developer</a>
+        <a href="#games" data-i18n="nav_games">My Games</a>
+        <a href="about.html" data-i18n="nav_about">About the Developer</a>
     </nav>
     <div class="container">
         <section id="games">
-            <h2>My Games</h2>
+            <h2 data-i18n="section_games">My Games</h2>
             <div class="game-card" onclick="window.location.href='yodha.html'">
                 <img src="assets/yodha.jpeg" alt="Yodha: Battle Board">
                 <div class="game-info">
-                    <h3>Yodha: Battle Board</h3>
-                    <p>A strategic online multiplayer board game with unique mechanics.</p>
+                    <h3 data-i18n="game_title">Yodha: Battle Board</h3>
+                    <p data-i18n="game_description">A strategic online multiplayer board game with unique mechanics.</p>
                 </div>
             </div>
         </section>
     </div>
     <footer>
-        <p>© 2025 Dripredgames. All rights reserved.</p>
+        <p data-i18n="footer">© 2025 Dripredgames. All rights reserved.</p>
     </footer>
+    <script src="localization.js"></script>
     <script>
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
             const button = document.querySelector('.theme-toggle i');
             button.className = document.body.classList.contains('dark-mode') ? 'fas fa-moon' : 'fas fa-sun';
         }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeLanguage();
+        });
     </script>
 </body>
 </html>
